@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Routes, Route, useNavigate, useLocation, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation, useParams, matchPath } from 'react-router-dom'
 import PhoneFrame from '../components/PhoneFrame'
 import StatusBar from '../components/StatusBar'
 import Lv5ChatListPage from './pages/Lv5ChatListPage'
@@ -7,6 +7,7 @@ import Lv5ChatDetailPage from './pages/Lv5ChatDetailPage'
 import Lv5ContactsPage from './pages/Lv5ContactsPage'
 import Lv5DiscoverPage from './pages/Lv5DiscoverPage'
 import Lv5ProfilePage from './pages/Lv5ProfilePage'
+import SubPageRouter, { SubPageRoute } from '../shared/subpages/SubPageRouter'
 import { useLv5Chats } from './hooks/useLv5Chats'
 import { useBreakpoint } from '../lv3/hooks/useMediaQuery'
 import s from './Lv5App.module.css'
@@ -52,8 +53,11 @@ function Lv5Mobile({ chatState }: { chatState: ReturnType<typeof useLv5Chats> })
           element={<Lv5MobileChatDetail chatState={chatState} />}
         />
         <Route path="/contacts" element={<Lv5ContactsPage />} />
+        <Route path="/contacts/:subId" element={<SubPageRoute category="contacts" level="" />} />
         <Route path="/discover" element={<Lv5DiscoverPage />} />
+        <Route path="/discover/:subId" element={<SubPageRoute category="discover" level="" />} />
         <Route path="/profile" element={<Lv5ProfilePage onReset={chatState.resetChats} />} />
+        <Route path="/profile/:subId" element={<SubPageRoute category="profile" level="" onReset={chatState.resetChats} />} />
         <Route path="*" element={<Lv5ChatListPage chats={chatState.sortedChats} query={chatState.query} setQuery={chatState.setQuery} onOpen={openChat} />} />
       </Routes>
     </PhoneFrame>
@@ -79,8 +83,11 @@ function Lv5MobileChatDetail({ chatState }: { chatState: ReturnType<typeof useLv
 type TabKey = 'chats' | 'contacts' | 'discover' | 'profile'
 
 function Lv5Desktop({ chatState }: { chatState: ReturnType<typeof useLv5Chats> }) {
-  const { pathname } = useLocation()
+  const { pathname: rawPath } = useLocation()
   const navigate = useNavigate()
+
+  // basename 去掉后才是真正的路由路径
+  const pathname = rawPath.replace(/^\/lab\/wechat-ui/, '') || '/'
 
   const activeTab: TabKey = pathname.startsWith('/contacts')
     ? 'contacts'
@@ -105,6 +112,11 @@ function Lv5Desktop({ chatState }: { chatState: ReturnType<typeof useLv5Chats> }
     if (tab === 'chats') navigate('/')
     else navigate(`/${tab}`)
   }
+
+  // 检测子路由
+  const subMatch = matchPath('/:tab/:subId', pathname)
+  const subTab = subMatch?.params?.tab as string | undefined
+  const subId = subMatch?.params?.subId as string | undefined
 
   return (
     <div className={s.desktopShell}>
@@ -159,15 +171,32 @@ function Lv5Desktop({ chatState }: { chatState: ReturnType<typeof useLv5Chats> }
             <Lv5ContactsPage asSidebar onOpenChat={openChat} />
           </div>
           <div className={s.mainCol}>
-            <DesktopPlaceholder tab={activeTab} />
+            {subMatch && subTab === 'contacts' && subId ? (
+              <SubPageRouter category="contacts" subId={subId} level="" embedded />
+            ) : (
+              <DesktopPlaceholder tab={activeTab} />
+            )}
           </div>
         </>
       )}
 
-      {activeTab !== 'chats' && activeTab !== 'contacts' && (
-        <div className={s.mainCol}>
-          {activeTab === 'discover' && <Lv5DiscoverPage />}
-          {activeTab === 'profile' && <Lv5ProfilePage onReset={chatState.resetChats} />}
+      {activeTab === 'discover' && (
+        <div className={s.mainCol} style={{ width: '100%' }}>
+          {subMatch && subTab === 'discover' && subId ? (
+            <SubPageRouter category="discover" subId={subId} level="" embedded />
+          ) : (
+            <Lv5DiscoverPage />
+          )}
+        </div>
+      )}
+
+      {activeTab === 'profile' && (
+        <div className={s.mainCol} style={{ width: '100%' }}>
+          {subMatch && subTab === 'profile' && subId ? (
+            <SubPageRouter category="profile" subId={subId} level="" embedded onReset={chatState.resetChats} />
+          ) : (
+            <Lv5ProfilePage onReset={chatState.resetChats} />
+          )}
         </div>
       )}
     </div>

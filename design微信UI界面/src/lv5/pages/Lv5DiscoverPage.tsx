@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Lv5TabBar from '../components/Lv5TabBar'
 import { DISCOVER_FEATURES } from '../data/mock'
@@ -19,12 +18,6 @@ const ICON_CLASS_MAP: Record<string, string> = {
 
 export default function Lv5DiscoverPage() {
   const navigate = useNavigate()
-  const [toast, setToast] = useState<string | null>(null)
-
-  const showToast = (label: string) => {
-    setToast(`「${label}」功能开发中`)
-    window.setTimeout(() => setToast(null), 1400)
-  }
 
   const firstGroup = DISCOVER_FEATURES.slice(0, 3)
   const secondGroup = DISCOVER_FEATURES.slice(3, 7)
@@ -46,20 +39,13 @@ export default function Lv5DiscoverPage() {
         </div>
       </div>
 
-      <div className={s.backBar} onClick={() => navigate('/home')}>
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-          <path d="M10 4l-4 4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        Lv.5 设计稿精还原 · 返回学习项目导航
-      </div>
-
       <div className={s.list}>
         <div className={s.section}>
           {firstGroup.map((f, i) => (
             <button
               key={f.id}
               className={`${s.row}${i === firstGroup.length - 1 ? ` ${s.noBorder}` : ''}`}
-              onClick={() => showToast(f.label)}
+              onClick={() => navigate(`/discover/${f.id}`)}
             >
               <div className={s.iconWrap}>
                 <div className={`${s.icon} ${ICON_CLASS_MAP[f.iconClass] || ''}`}>
@@ -82,7 +68,7 @@ export default function Lv5DiscoverPage() {
             <button
               key={f.id}
               className={`${s.row}${i === secondGroup.length - 1 ? ` ${s.noBorder}` : ''}`}
-              onClick={() => showToast(f.label)}
+              onClick={() => navigate(`/discover/${f.id}`)}
             >
               <div className={s.iconWrap}>
                 <div className={`${s.icon} ${ICON_CLASS_MAP[f.iconClass] || ''}`}>
@@ -105,7 +91,7 @@ export default function Lv5DiscoverPage() {
             <button
               key={f.id}
               className={`${s.row}${i === thirdGroup.length - 1 ? ` ${s.noBorder}` : ''}`}
-              onClick={() => showToast(f.label)}
+              onClick={() => navigate(`/discover/${f.id}`)}
             >
               <div className={s.iconWrap}>
                 <div className={`${s.icon} ${ICON_CLASS_MAP[f.iconClass] || ''}`}>
@@ -126,7 +112,6 @@ export default function Lv5DiscoverPage() {
         <div style={{ height: 24 }} />
       </div>
 
-      {toast && <div className={s.toast}>{toast}</div>}
       <Lv5TabBar />
     </div>
   )

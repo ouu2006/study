@@ -105,7 +105,7 @@ export default function Lv5ContactsPage({ asSidebar, onOpenChat }: Props) {
       <div className={s.scroll} ref={scrollRef}>
         <div className={s.categoryList}>
           {CONTACT_CATEGORIES.map((cat) => (
-            <button key={cat.id} className={s.categoryItem} onClick={() => undefined}>
+            <button key={cat.id} className={s.categoryItem} onClick={() => navigate(`/contacts/${cat.id}`)}>
               <div className={s.categoryIcon} style={{ background: cat.bg }}>
                 {cat.icon}
               </div>
