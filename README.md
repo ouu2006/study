@@ -1,2 +1,2 @@
 # study
-用于teach skill学习用
+用于学习
