@@ -9,12 +9,15 @@ import DiscoverPage from './pages/DiscoverPage'
 import ProfilePage from './pages/ProfilePage'
 import HomePage from './pages/HomePage'
 import Lv3App from './lv3/Lv3App'
+import Lv4App from './lv4/Lv4App'
 import { useChats } from './hooks/useChats'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Lv.4 全端体验：基于设计稿还原 + 跨页跳转 + 桌面端分栏 */}
+        <Route path="/lv4/*" element={<Lv4App />} />
         {/* Lv.3 交互深化：自带多端布局（移动端手机框 / 桌面端分栏），独立于 Lv.2 手机框 */}
         <Route path="/lv3/*" element={<Lv3App />} />
         {/* Lv.2 组件进阶：手机框 + 状态栏 */}
