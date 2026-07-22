@@ -27,7 +27,7 @@ function Lv5Mobile({ chatState }: { chatState: ReturnType<typeof useLv5Chats> })
   const openChat = useCallback(
     (id: string) => {
       chatState.markRead(id)
-      navigate(`/lv5/chat/${id}`)
+      navigate(`/chat/${id}`)
     },
     [chatState, navigate],
   )
@@ -71,7 +71,7 @@ function Lv5MobileChatDetail({ chatState }: { chatState: ReturnType<typeof useLv
       chatName={chat?.name ?? '聊天'}
       messages={chat?.messages ?? []}
       onSend={(text) => chatState.sendMessage(id, text)}
-      onBack={() => navigate('/lv5')}
+      onBack={() => navigate('/')}
     />
   )
 }
@@ -82,28 +82,28 @@ function Lv5Desktop({ chatState }: { chatState: ReturnType<typeof useLv5Chats> }
   const { pathname } = useLocation()
   const navigate = useNavigate()
 
-  const activeTab: TabKey = pathname.startsWith('/lv5/contacts')
+  const activeTab: TabKey = pathname.startsWith('/contacts')
     ? 'contacts'
-    : pathname.startsWith('/lv5/discover')
+    : pathname.startsWith('/discover')
       ? 'discover'
-      : pathname.startsWith('/lv5/profile')
+      : pathname.startsWith('/profile')
         ? 'profile'
         : 'chats'
 
-  const selectedChatId = pathname.startsWith('/lv5/chat/') ? pathname.slice('/lv5/chat/'.length) : ''
+  const selectedChatId = pathname.startsWith('/chat/') ? pathname.slice('/chat/'.length) : ''
   const selectedChat = chatState.getChat(selectedChatId)
 
   const openChat = useCallback(
     (id: string) => {
       chatState.markRead(id)
-      navigate(`/lv5/chat/${id}`)
+      navigate(`/chat/${id}`)
     },
     [chatState, navigate],
   )
 
   const goTab = (tab: TabKey) => {
-    if (tab === 'chats') navigate('/lv5')
-    else navigate(`/lv5/${tab}`)
+    if (tab === 'chats') navigate('/')
+    else navigate(`/${tab}`)
   }
 
   return (
@@ -136,7 +136,7 @@ function Lv5Desktop({ chatState }: { chatState: ReturnType<typeof useLv5Chats> }
                 chatName={selectedChat.name}
                 messages={selectedChat.messages}
                 onSend={(text) => chatState.sendMessage(selectedChat.id, text)}
-                onBack={() => navigate('/lv5')}
+                onBack={() => navigate('/')}
                 embedded
               />
             ) : (
@@ -190,7 +190,6 @@ function DesktopPlaceholder({ tab }: { tab: TabKey }) {
 }
 
 function Rail({ activeTab, onTab }: { activeTab: TabKey; onTab: (t: TabKey) => void }) {
-  const navigate = useNavigate()
   const items: { key: TabKey; label: string; icon: React.ReactNode }[] = [
     {
       key: 'chats',
@@ -230,10 +229,6 @@ function Rail({ activeTab, onTab }: { activeTab: TabKey; onTab: (t: TabKey) => v
           </div>
         </button>
       ))}
-      <div className={s.railSpacer} />
-      <button className={s.railBackBtn} onClick={() => navigate('/home')} title="返回学习导航">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5" /><polyline points="12 19 5 12 12 5" /></svg>
-      </button>
     </div>
   )
 }

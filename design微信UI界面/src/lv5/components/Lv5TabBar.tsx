@@ -4,10 +4,10 @@ import s from './Lv5TabBar.module.css'
 type TabKey = 'chats' | 'contacts' | 'discover' | 'profile'
 
 const TABS: { key: TabKey; label: string; path: string }[] = [
-  { key: 'chats', label: '微信', path: '/lv5' },
-  { key: 'contacts', label: '通讯录', path: '/lv5/contacts' },
-  { key: 'discover', label: '发现', path: '/lv5/discover' },
-  { key: 'profile', label: '我', path: '/lv5/profile' },
+  { key: 'chats', label: '微信', path: '/' },
+  { key: 'contacts', label: '通讯录', path: '/contacts' },
+  { key: 'discover', label: '发现', path: '/discover' },
+  { key: 'profile', label: '我', path: '/profile' },
 ]
 
 function ChatIcon({ active }: { active: boolean }) {
@@ -58,11 +58,11 @@ export default function Lv5TabBar() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
-  const activeTab: TabKey = pathname.startsWith('/lv5/contacts')
+  const activeTab: TabKey = pathname.startsWith('/contacts')
     ? 'contacts'
-    : pathname.startsWith('/lv5/discover')
+    : pathname.startsWith('/discover')
       ? 'discover'
-      : pathname.startsWith('/lv5/profile')
+      : pathname.startsWith('/profile')
         ? 'profile'
         : 'chats'
 

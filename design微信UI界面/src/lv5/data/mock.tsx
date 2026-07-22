@@ -4,16 +4,16 @@ export const initialLv5Chats: Lv5Chat[] = [
   {
     id: 'file-transfer',
     name: '文件传输助手',
-    preview: 'http://165.22.246.195/',
-    time: '7月12日',
+    preview: 'https://ozxowx.app/campus/',
+    time: '22:46',
     pinned: true,
     avatar: { kind: 'single', background: 'linear-gradient(135deg, #2B579A, #3B82F6)', label: 'W' },
     messages: [
-      { id: 'm1', time: '6月26日 06:36', kind: 'url', content: 'https://ozxowx.app/campus/', sender: 'self' },
-      { id: 'm2', time: '7月11日 10:26', kind: 'file', content: '欧玮轩心理委员学期工作报告.docx', size: '107.9 KB', sender: 'self', fileIcon: 'W', fileIconBg: '#2B5797' },
-      { id: 'm3', time: '7月12日 00:49', kind: 'url', content: 'http://165.22.246.195/', sender: 'self' },
-      { id: 'm4', time: '7月14日 09:54', kind: 'file', content: '幼儿园组织学生和家长学习观看的警....14.docx', size: '384.2 KB', sender: 'self', fileIcon: 'W', fileIconBg: '#2B5797' },
-      { id: 'm5', time: '7月15日 19:12', kind: 'image', content: '数据表格截图', imageBackground: 'linear-gradient(135deg, #E0E7FF, #C7D2FE)', sender: 'self' },
+      { id: 'm1', time: '7月22日 22:46', kind: 'url', content: 'https://ozxowx.app/', sender: 'self' },
+      { id: 'm2', time: '7月22日 22:46', kind: 'url', content: 'https://ozxowx.app/lab/', sender: 'self' },
+      { id: 'm3', time: '7月22日 22:46', kind: 'url', content: 'https://ozxowx.app/lab/web-frontend/', sender: 'self' },
+      { id: 'm4', time: '7月22日 22:46', kind: 'url', content: 'https://ozxowx.app/lab/wechat-ui/', sender: 'self' },
+      { id: 'm5', time: '7月22日 22:46', kind: 'url', content: 'https://ozxowx.app/campus/', sender: 'self' },
     ],
   },
   {

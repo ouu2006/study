@@ -63,7 +63,7 @@ export default function Lv5ContactsPage({ asSidebar, onOpenChat }: Props) {
       if (asSidebar && onOpenChat) {
         onOpenChat(c.chatId)
       } else {
-        navigate(`/lv5/chat/${c.chatId}`)
+        navigate(`/chat/${c.chatId}`)
       }
     }
   }
@@ -83,15 +83,6 @@ export default function Lv5ContactsPage({ asSidebar, onOpenChat }: Props) {
               <line x1="5" y1="12" x2="19" y2="12" />
             </svg>
           </div>
-        </div>
-      )}
-
-      {!asSidebar && (
-        <div className={s.backBar} onClick={() => navigate('/home')}>
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-            <path d="M10 4l-4 4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Lv.5 设计稿精还原 · 返回学习项目导航
         </div>
       )}
 
