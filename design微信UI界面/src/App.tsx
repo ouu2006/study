@@ -8,16 +8,28 @@ import ContactsPage from './pages/ContactsPage'
 import DiscoverPage from './pages/DiscoverPage'
 import ProfilePage from './pages/ProfilePage'
 import HomePage from './pages/HomePage'
+import Lv3App from './lv3/Lv3App'
 import { useChats } from './hooks/useChats'
 
 export default function App() {
   return (
     <BrowserRouter>
-      <PhoneFrame>
-        <StatusBar />
-        <AppRoutes />
-      </PhoneFrame>
+      <Routes>
+        {/* Lv.3 交互深化：自带多端布局（移动端手机框 / 桌面端分栏），独立于 Lv.2 手机框 */}
+        <Route path="/lv3/*" element={<Lv3App />} />
+        {/* Lv.2 组件进阶：手机框 + 状态栏 */}
+        <Route path="*" element={<Lv2Shell />} />
+      </Routes>
     </BrowserRouter>
+  )
+}
+
+function Lv2Shell() {
+  return (
+    <PhoneFrame>
+      <StatusBar />
+      <AppRoutes />
+    </PhoneFrame>
   )
 }
 

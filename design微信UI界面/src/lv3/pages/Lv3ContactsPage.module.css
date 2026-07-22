@@ -1,0 +1,189 @@
+.root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--wechat-bg);
+}
+
+.searchArea {
+  padding: 8px 16px;
+  background: var(--wechat-bg);
+  flex-shrink: 0;
+}
+.searchWrap {
+  position: relative;
+}
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--wechat-text-tertiary);
+  pointer-events: none;
+}
+.searchInput {
+  width: 100%;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: var(--wechat-white);
+  padding: 0 12px 0 34px;
+  font-size: 14px;
+  color: var(--wechat-text-primary);
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--wechat-white);
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--wechat-white);
+  border-bottom: 0.5px solid var(--wechat-divider);
+  min-height: 56px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.categoryItem:active {
+  background: #ECECEC;
+}
+.categoryIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.categoryIcon svg {
+  width: 22px;
+  height: 22px;
+}
+.categoryLabel {
+  flex: 1;
+  font-size: 16px;
+  color: var(--wechat-text-primary);
+}
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--wechat-text-tertiary);
+}
+
+.sectionDivider {
+  padding: 6px 16px;
+  font-size: 12px;
+  color: var(--wechat-text-secondary);
+  background: var(--wechat-bg);
+}
+
+.letterHeader {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--wechat-text-secondary);
+  background: var(--wechat-bg);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: var(--wechat-white);
+  border-bottom: 0.5px solid var(--wechat-divider);
+  min-height: 52px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.contactItem:active {
+  background: #ECECEC;
+}
+.contactAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.contactName {
+  flex: 1;
+  font-size: 16px;
+  color: var(--wechat-text-primary);
+}
+
+/* 字母索引条 */
+.indexBar {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 4px 2px;
+  border-radius: 10px;
+}
+.indexItem {
+  font-size: 10px;
+  color: var(--wechat-text-secondary);
+  cursor: pointer;
+  padding: 1px 3px;
+  background: none;
+  border: none;
+  line-height: 1.2;
+}
+.indexItem:hover,
+.indexItem:active {
+  color: var(--wechat-green);
+  font-weight: 700;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--wechat-text-tertiary);
+  font-size: 14px;
+}
+
+.toast {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 50;
+  white-space: nowrap;
+}

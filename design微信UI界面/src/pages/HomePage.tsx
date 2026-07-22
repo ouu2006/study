@@ -36,7 +36,7 @@ const LEVELS: ProjectLevel[] = [
         name: '微信UI界面',
         desc: 'design微信UI界面 — React + TypeScript + Vite',
         path: '/',
-        status: 'current',
+        status: 'done',
       },
     ],
   },
@@ -46,8 +46,21 @@ const LEVELS: ProjectLevel[] = [
     color: '#8B5CF6',
     projects: [
       {
-        name: '敬请期待',
-        desc: '更多项目开发中...',
+        name: '微信UI交互深化',
+        desc: '基于设计稿还原 · 搜索/左滑/长按/置顶/静音 · 桌面端分栏多端适配',
+        path: '/lv3',
+        status: 'current',
+      },
+    ],
+  },
+  {
+    level: 'Lv.4',
+    levelName: '敬请期待',
+    color: '#EC4899',
+    projects: [
+      {
+        name: '更多项目开发中...',
+        desc: '持续学习中',
         path: '',
         status: 'pending',
       },
@@ -120,9 +133,9 @@ export default function HomePage() {
         ))}
 
         <div className={s.footer}>
-          <div className={s.footerText}>当前进度：2 / 6 项目</div>
+          <div className={s.footerText}>当前进度：3 / 6 项目</div>
           <div className={s.progressBar}>
-            <div className={s.progressFill} style={{ width: '33%' }} />
+            <div className={s.progressFill} style={{ width: '50%' }} />
           </div>
         </div>
 

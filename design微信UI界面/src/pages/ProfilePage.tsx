@@ -70,6 +70,17 @@ const SERVICE_ROWS: Row[] = [
     ),
   },
   {
+    label: '进入 Lv.3 交互深化',
+    color: '#8B5CF6',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    ),
+    action: 'nav-lv3',
+  },
+  {
     label: '学习项目导航',
     color: '#667eea',
     icon: (
@@ -164,6 +175,8 @@ export default function ProfilePage() {
               onClick={() => {
                 if (r.action === 'nav-home') {
                   navigate('/home')
+                } else if (r.action === 'nav-lv3') {
+                  navigate('/lv3')
                 } else {
                   showToast(r.label)
                 }
