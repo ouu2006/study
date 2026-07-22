@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import TabBar from '../components/TabBar'
 import s from './ProfilePage.module.css'
@@ -8,6 +9,7 @@ interface Row {
   color: string
   hint?: string
   icon: React.ReactNode
+  action?: string
 }
 
 const SERVICE_ROWS: Row[] = [
@@ -67,9 +69,21 @@ const SERVICE_ROWS: Row[] = [
       </svg>
     ),
   },
+  {
+    label: '学习项目导航',
+    color: '#667eea',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+      </svg>
+    ),
+    action: 'nav-home',
+  },
 ]
 
 export default function ProfilePage() {
+  const navigate = useNavigate()
   const [toast, setToast] = useState<string | null>(null)
   const showToast = (label: string) => {
     setToast(`「${label}」功能开发中`)
@@ -147,7 +161,13 @@ export default function ProfilePage() {
             <button
               key={r.label}
               className={`${s.listRow}${i === SERVICE_ROWS.length - 1 ? ` ${s.last}` : ''}`}
-              onClick={() => showToast(r.label)}
+              onClick={() => {
+                if (r.action === 'nav-home') {
+                  navigate('/home')
+                } else {
+                  showToast(r.label)
+                }
+              }}
             >
               <div className={s.rowMain}>
                 <div className={s.rowIcon} style={{ color: r.color }}>

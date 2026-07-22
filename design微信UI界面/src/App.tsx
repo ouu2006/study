@@ -7,6 +7,7 @@ import ChatDetailPage from './pages/ChatDetailPage'
 import ContactsPage from './pages/ContactsPage'
 import DiscoverPage from './pages/DiscoverPage'
 import ProfilePage from './pages/ProfilePage'
+import HomePage from './pages/HomePage'
 import { useChats } from './hooks/useChats'
 
 export default function App() {
@@ -34,6 +35,7 @@ function AppRoutes() {
 
   return (
     <Routes>
+      <Route path="/home" element={<HomePage />} />
       <Route path="/" element={<ChatListPage chats={chats} onOpen={openChat} />} />
       <Route
         path="/chat/:id"
@@ -62,7 +64,6 @@ function ChatDetailRoute({
   const { id = '' } = useParams()
   const chat = getChat(id)
   if (!chat) {
-    // Fallback: render an empty chat detail so the route never crashes.
     return (
       <ChatDetailPage
         chatId={id}

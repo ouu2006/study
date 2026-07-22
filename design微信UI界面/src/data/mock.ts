@@ -1,9 +1,8 @@
 import type { Chat, Contact } from '../types'
 
 /**
- * The 10 chats from the design mockup (chat-list.html).
- * The first chat ("文件传输助手") is wired to the chat-detail page so that
- * tapping it shows the rich message thread from the design.
+ * 微信聊天列表数据 — 与设计稿完全一致
+ * 第一个聊天（文件传输助手）连接到聊天详情页
  */
 export const initialChats: Chat[] = [
   {
@@ -53,7 +52,7 @@ export const initialChats: Chat[] = [
   {
     id: 'class-mute',
     name: '25计科（创新班）1️⃣班禁言群',
-    preview: '班主任: 关于下周教学安排的通知',
+    preview: '班主任-夏令富: 2026-2027学年第一学期补考拟...',
     time: '昨天',
     muted: true,
     avatar: {
@@ -65,7 +64,7 @@ export const initialChats: Chat[] = [
   {
     id: 'class-chat',
     name: '25计科（创新班）1️⃣班聊天群',
-    preview: '[视频号] 同学的视频',
+    preview: '严杨天 18024679180: [视频号] 广州政法的视频',
     time: '周六',
     avatar: {
       kind: 'group',
@@ -76,7 +75,7 @@ export const initialChats: Chat[] = [
   {
     id: 'ai-bot',
     name: 'u宝 AI',
-    preview: '⚠️ 系统警告: 检测到异常登录',
+    preview: '⚠️ Gateway shutting down — Your current ta...',
     time: '7月12日',
     ai: true,
     avatar: { kind: 'single', background: 'linear-gradient(135deg, #6366F1, #A855F7)', label: 'AI' },
@@ -85,7 +84,7 @@ export const initialChats: Chat[] = [
   {
     id: 'dorm',
     name: '宿舍',
-    preview: '室友C: ok',
+    preview: '杨智睿: ok',
     time: '7月11日',
     muted: true,
     avatar: { kind: 'single', background: '#22C55E', label: '宿' },
@@ -94,7 +93,7 @@ export const initialChats: Chat[] = [
   {
     id: 'sit',
     name: 'SiT联盟相亲相爱一家人',
-    preview: '主席: 周五例会改时间',
+    preview: '土豆丶: 位置错了',
     time: '6月6日',
     muted: true,
     avatar: {
@@ -106,7 +105,7 @@ export const initialChats: Chat[] = [
   {
     id: 'rain',
     name: 'rain（10.22）',
-    preview: '收到，谢谢～',
+    preview: '这个是真的好可爱',
     time: '3月15日',
     avatar: { kind: 'single', background: '#3B82F6', label: 'R' },
     messages: [],
@@ -114,7 +113,7 @@ export const initialChats: Chat[] = [
   {
     id: 'fan-group',
     name: '圆小燃VX群',
-    preview: '测试卖家: 这个价格很划算',
+    preview: 'goodbester: 这个60，小亏吧，不过还行',
     previewPrefix: '[4条]',
     time: '16:47',
     muted: true,
@@ -128,7 +127,7 @@ export const initialChats: Chat[] = [
   {
     id: 'official',
     name: '公众号',
-    preview: '测试日报: 今日科技新闻速览...',
+    preview: '广东学考妹: 55校可查！中大第6！肇医降...',
     previewPrefix: '[3条]',
     time: '16:44',
     unread: 3,
@@ -138,7 +137,7 @@ export const initialChats: Chat[] = [
   {
     id: 'signup',
     name: '传习社Design组报名',
-    preview: '负责老师: 报名表已收到',
+    preview: '应该可以吧，但现在在老家没电脑😅',
     time: '16:40',
     avatar: { kind: 'single', background: '#F97316', label: 'F' },
     messages: [],
@@ -146,10 +145,13 @@ export const initialChats: Chat[] = [
 ]
 
 export const initialContacts: Contact[] = [
-  { id: 'c1', name: '阿强测试', background: '#F472B6', label: '阿' },
-  { id: 'c2', name: '安迪朋友', background: '#3B82F6', label: '安' },
-  { id: 'c3', name: '爱心志愿者', background: '#22C55E', label: '爱' },
-  { id: 'c4', name: '白云悠悠', background: '#F97316', label: '白' },
-  { id: 'c5', name: '北极光旅行', background: '#EF4444', label: '北' },
-  { id: 'c6', name: '春风十里', background: '#06B6D4', label: '春' },
+  { id: 'c1', name: 'AAA奶神·龙🐉', background: 'linear-gradient(135deg, #667eea, #764ba2)', label: 'A' },
+  { id: 'c2', name: 'AAA熟食鸡批发', background: 'linear-gradient(135deg, #f093fb, #f5576c)', label: 'A' },
+  { id: 'c3', name: 'AAA-终末地z7行动组-埃特拉', background: 'linear-gradient(135deg, #4facfe, #00f2fe)', label: 'A' },
+  { id: 'c4', name: '阿巴阿巴阿巴', background: '#F472B6', label: '阿' },
+  { id: 'c5', name: '阿彬叔叔', background: '#3B82F6', label: '阿' },
+  { id: 'c6', name: '阿强测试', background: '#22C55E', label: '阿' },
+  { id: 'c7', name: '白云悠悠', background: '#F97316', label: '白' },
+  { id: 'c8', name: '北极光旅行', background: '#EF4444', label: '北' },
+  { id: 'c9', name: '春风十里', background: '#06B6D4', label: '春' },
 ]

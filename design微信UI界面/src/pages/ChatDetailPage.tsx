@@ -14,9 +14,10 @@ interface Props {
 export default function ChatDetailPage({ chatId, chatName, messages, onSend }: Props) {
   const navigate = useNavigate()
   const [text, setText] = useState('')
+  const [showEmoji, setShowEmoji] = useState(false)
+  const [showMore, setShowMore] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll to bottom whenever the message list changes.
   useEffect(() => {
     const el = scrollRef.current
     if (el) el.scrollTop = el.scrollHeight
@@ -26,10 +27,14 @@ export default function ChatDetailPage({ chatId, chatName, messages, onSend }: P
     if (!text.trim()) return
     onSend(text)
     setText('')
+    setShowEmoji(false)
+    setShowMore(false)
   }
 
-  // Group messages by their timestamp label so we can render the centered
-  // time pill above the first message of each group.
+  const handleEmojiClick = (emoji: string) => {
+    setText((prev) => prev + emoji)
+  }
+
   const groups = groupByTime(messages)
 
   return (
@@ -50,9 +55,43 @@ export default function ChatDetailPage({ chatId, chatName, messages, onSend }: P
         <div style={{ height: 16 }} />
       </div>
 
+      {showEmoji && (
+        <div className={s.emojiPanel}>
+          <div className={s.emojiGrid}>
+            {['😀', '😂', '🤣', '😊', '😍', '🤔', '😎', '🥳', '😢', '😡', '👍', '👎', '❤️', '🎉', '🔥', '💯'].map((e) => (
+              <button key={e} className={s.emojiItem} onClick={() => handleEmojiClick(e)}>
+                {e}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {showMore && (
+        <div className={s.morePanel}>
+          <div className={s.moreGrid}>
+            {[
+              { icon: '🖼️', label: '相册' },
+              { icon: '📷', label: '拍摄' },
+              { icon: '📹', label: '视频通话' },
+              { icon: '📍', label: '位置' },
+              { icon: '🎤', label: '语音输入' },
+              { icon: '📁', label: '文件' },
+              { icon: '💰', label: '转账' },
+              { icon: '🎁', label: '红包' },
+            ].map((item) => (
+              <button key={item.label} className={s.moreItem}>
+                <div className={s.moreIcon}>{item.icon}</div>
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className={s.inputBar}>
-        <div className={s.inputBtnDark} aria-label="语音">
-          <svg viewBox="0 0 24 24" fill="currentColor">
+        <div className={s.inputBtnLight} aria-label="语音">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
             <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
             <path d="M19 10v2a7 7 0 01-14 0v-2H3v2a9 9 0 0018 0v-2h-2zM12 21v2M8 23h8" />
           </svg>
@@ -65,28 +104,46 @@ export default function ChatDetailPage({ chatId, chatName, messages, onSend }: P
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleSend()
           }}
+          onFocus={() => {
+            setShowEmoji(false)
+            setShowMore(false)
+          }}
           aria-label="输入消息"
         />
-        <div className={s.inputBtnLight} aria-label="表情">
+        <button
+          className={s.inputBtnLight}
+          aria-label="表情"
+          onClick={() => {
+            setShowEmoji(!showEmoji)
+            setShowMore(false)
+          }}
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
             <circle cx="12" cy="12" r="10" />
             <path d="M8 14s1.5 2 4 2 4-2 4-2" />
             <line x1="9" y1="9" x2="9.01" y2="9" />
             <line x1="15" y1="9" x2="15.01" y2="9" />
           </svg>
-        </div>
+        </button>
         {text.trim() ? (
           <button className={s.sendBtn} onClick={handleSend}>
             发送
           </button>
         ) : (
-          <div className={s.inputBtnLight} aria-label="更多">
+          <button
+            className={s.inputBtnLight}
+            aria-label="更多"
+            onClick={() => {
+              setShowMore(!showMore)
+              setShowEmoji(false)
+            }}
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="16" />
               <line x1="8" y1="12" x2="16" y2="12" />
             </svg>
-          </div>
+          </button>
         )}
       </div>
     </div>
@@ -94,23 +151,26 @@ export default function ChatDetailPage({ chatId, chatName, messages, onSend }: P
 }
 
 function MessageRow({ message }: { message: ChatMessage }) {
+  const isSelf = message.sender === 'self'
+
   return (
-    <div className={s.msgRow}>
+    <div className={`${s.msgRow} ${isSelf ? s.msgRowSelf : s.msgRowOther}`}>
+      {!isSelf && <div className={`${s.msgAvatar} ${s.msgAvatarOther}`}>对</div>}
       <div className={s.bubbleCol}>
         {message.kind === 'text' && (
-          <div className={s.bubbleSelf}>
+          <div className={isSelf ? s.bubbleSelf : s.bubbleOther}>
             <span>{message.content}</span>
           </div>
         )}
         {message.kind === 'url' && (
-          <div className={s.bubbleSelf}>
+          <div className={isSelf ? s.bubbleSelf : s.bubbleOther}>
             <a href={message.content} target="_blank" rel="noreferrer">
               {message.content}
             </a>
           </div>
         )}
         {message.kind === 'file' && (
-          <div className={s.fileCard}>
+          <div className={`${s.fileCard} ${!isSelf ? s.fileCardOther : ''}`}>
             <div className={s.fileIcon}>
               <span>W</span>
             </div>
@@ -121,7 +181,10 @@ function MessageRow({ message }: { message: ChatMessage }) {
           </div>
         )}
         {message.kind === 'image' && (
-          <div className={s.imgPreview} style={{ background: message.imageBackground }}>
+          <div
+            className={`${s.imgPreview} ${!isSelf ? s.imgPreviewOther : ''}`}
+            style={{ background: message.imageBackground }}
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
               <rect x="3" y="3" width="18" height="18" rx="2" />
               <circle cx="8.5" cy="8.5" r="1.5" />
@@ -130,7 +193,7 @@ function MessageRow({ message }: { message: ChatMessage }) {
           </div>
         )}
       </div>
-      <div className={s.msgAvatar}>我</div>
+      {isSelf && <div className={s.msgAvatar}>我</div>}
     </div>
   )
 }

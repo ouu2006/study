@@ -1,0 +1,211 @@
+.root {
+  background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%);
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 24px 20px 20px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.headerSubtitle {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.content {
+  flex: 1;
+  padding: 16px 16px 0;
+}
+
+.introCard {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.introIcon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.introText {
+  flex: 1;
+  min-width: 0;
+}
+
+.introTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--wechat-text-primary);
+  margin-bottom: 4px;
+}
+
+.introDesc {
+  font-size: 13px;
+  color: var(--wechat-text-secondary);
+  line-height: 1.5;
+}
+
+.levelSection {
+  margin-bottom: 24px;
+}
+
+.levelHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.levelBadge {
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.levelName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--wechat-text-primary);
+}
+
+.levelLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.projectCard {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.projectCard:active {
+  transform: scale(0.98);
+}
+
+.cardCurrent {
+  border: 2px solid #667eea;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+}
+
+.cardDone {
+  opacity: 0.9;
+}
+
+.cardPending {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.projectLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.projectIcon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.projectInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.projectName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--wechat-text-primary);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.projectDesc {
+  font-size: 12px;
+  color: var(--wechat-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.currentTag {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--wechat-text-tertiary);
+  flex-shrink: 0;
+}
+
+.footer {
+  margin-top: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.footerText {
+  font-size: 13px;
+  color: var(--wechat-text-secondary);
+  margin-bottom: 10px;
+}
+
+.progressBar {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #22C55E, #16A34A);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
