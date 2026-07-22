@@ -62,6 +62,19 @@ const LEVELS: ProjectLevel[] = [
         name: '微信UI全端体验',
         desc: '设计稿完整还原 · 聊天/通讯录跨页跳转 · 桌面端分栏 + 平板/移动多端适配',
         path: '/lv4',
+        status: 'done',
+      },
+    ],
+  },
+  {
+    level: 'Lv.5',
+    levelName: '设计稿精还原',
+    color: '#F97316',
+    projects: [
+      {
+        name: '微信UI设计稿精还原',
+        desc: '多类型消息（文字/链接/文件/图片）+ 表情面板 + 更多功能面板 + 桌面端分栏多端适配',
+        path: '/lv5',
         status: 'current',
       },
     ],
@@ -133,9 +146,9 @@ export default function HomePage() {
         ))}
 
         <div className={s.footer}>
-          <div className={s.footerText}>当前进度：4 / 6 项目</div>
+          <div className={s.footerText}>当前进度：5 / 7 项目</div>
           <div className={s.progressBar}>
-            <div className={s.progressFill} style={{ width: '66.7%' }} />
+            <div className={s.progressFill} style={{ width: '71.4%' }} />
           </div>
         </div>
 

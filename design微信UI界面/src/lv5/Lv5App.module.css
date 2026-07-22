@@ -1,0 +1,172 @@
+.desktopShell {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  background: var(--wechat-bg, #EDEDED);
+  overflow: hidden;
+}
+
+.iconRail {
+  width: 64px;
+  flex-shrink: 0;
+  background: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 16px;
+  gap: 8px;
+}
+
+.railAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #F97316, #EC4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.railBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9A9A9A;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  font-family: inherit;
+}
+
+.railBtn:hover {
+  color: #D0D0D0;
+}
+
+.railBtnActive {
+  color: #07C160;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.railBtn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.railLabel {
+  font-size: 10px;
+  color: inherit;
+  margin-top: 2px;
+}
+
+.railSpacer {
+  flex: 1;
+}
+
+.railBackBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9A9A9A;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.railBackBtn:hover {
+  color: #D0D0D0;
+}
+
+.railBackBtn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.middleCol {
+  width: 340px;
+  flex-shrink: 0;
+  background: var(--wechat-white, #FFFFFF);
+  border-right: 0.5px solid var(--wechat-divider, rgba(0, 0, 0, 0.05));
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.mainCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.middleHeader {
+  height: 52px;
+  background: var(--wechat-input-bg, #F7F7F7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 0.5px solid var(--wechat-divider, rgba(0, 0, 0, 0.05));
+  flex-shrink: 0;
+}
+
+.middleHeaderTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--wechat-text-primary, #111111);
+}
+
+.middleHeaderActions {
+  display: flex;
+  gap: 12px;
+  color: var(--wechat-text-secondary, #888888);
+}
+
+.middleHeaderActions svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wechat-text-tertiary, #B2B2B2);
+}
+
+.placeholderInner {
+  text-align: center;
+}
+
+.placeholderEmoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.placeholderText {
+  font-size: 14px;
+}
+
+.placeholderSub {
+  font-size: 12px;
+  margin-top: 6px;
+  opacity: 0.7;
+}
