@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>第三次页面美化</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="gzasc_logo.png">
+</head>
+<style>
+.form-group {
+    margin-bottom: 16px;
+}
+</style>
+<body>   
+<div class="container">
+    <img src="logo_blue.png" alt="校徽" style="vertical-align: middle;">
+    <p>姓名：嚄u</p>
+    <p>专业：计算机科学与技术</p>
+    <p>基础学分：80 分</p>
+    <div class="form-group">
+        <label for="scoreInput">请输入加分: </label>
+        <input type="number" id="scoreInput" class="input-box" placeholder="请输入加分" />
+    </div>
+
+    <div class="form-group">
+        <label for="reasonSelect">加分原因: </label>
+        <select id="reasonSelect">
+            <option value="竞赛获奖">竞赛获奖</option>
+            <option value="优秀班干">优秀班干</option>
+            <option value="志愿服务">志愿服务</option>
+        </select>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn btn-primary" onclick="calculate()">计算总分</button>
+        <button class="btn btn-clear" onclick="clearAll()">清空</button>
+    </div>
+
+    <div class="result-text" id="result">预估总分：等待计算</div>
+
+    <h3 class="history-title">加分记录</h3>
+    <ul class="history-list" id="recordList">
+        <li class="empty-hint">暂无记录</li>
+    </ul>
+</div>
+
+<script>
+    var records = [];
+    function calculate() {
+        var input = document.getElementById("scoreInput").value;
+        var reason = document.getElementById("reasonSelect").value;
+        var x = Number(input);
+        if (x <= 0) {
+            document.getElementById("result").innerText = "错误：加分必须大于0！";
+            return;
+        }
+        var total = 80 + x;
+        document.getElementById("result").innerText = "计算成功！预估总分为：" + total + " 分(加分原因："+reason+"分)";
+        var recordStr = reason + " +" + x + "分, 当前总分：" + total;
+        records.push(recordStr);
+        var listHtml = "";
+        for (var i = 0; i < records.length; i++) {
+            listHtml += "<li>" + records[i] + "</li>";
+        }
+        document.getElementById("recordList").innerHTML = listHtml;
+    }
+    function clearAll() {
+        records = [];
+        document.getElementById("recordList").innerHTML = "<li class='empty-hint'>暂无记录</li>";
+        document.getElementById("result").innerText = "预估总分：等待计算";
+    }
+</script>
+</body>
+</html>
